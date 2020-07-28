@@ -59,4 +59,4 @@ Twitter has an additional layer of difficultly as compared to The Economic Times
 ## Conclusion
 All in all, under this project a total of **approximately 1 million tweets and 400,000 news articles were scraped** for the period of five years between Jan 1, 2015 and Dec 31, 2019 to be used as input in other NLP projects with minimal manual intervention.
 
-**Note - **The python files attached with this repository are kept *clean, re-usable and fully loaded with comments* in order to explain all important aspects of the coding that went into this project.
+**Note -** The python files attached with this repository are kept *clean, re-usable and fully loaded with comments* in order to explain all important aspects of the coding that went into this project.
