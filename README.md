@@ -45,4 +45,7 @@ Being a dynamic website, this website had unique characteristics of its own. Alt
 <br/>
 <br/>
 **Key challenges faced and solutions identified:**
-- The older news articles won't load until the page is scrolled down till the bottom. To handle this issue, a bit of **JavaScript injection** was used with chromedriver.
+- The older news articles won't load until the page is scrolled down till the bottom. To handle this issue, a bit of **JavaScript injection** was used with chromedriver
+- The *page reloads automatically* on its own after a few minutes, thus the historical articles could not be revealed beyond a certain period. To counter this issue, unlike the time with moneycontrol static webpages, where all the four features of the articles on a given page were retrieved first before moving on to the next page, here the code was subdivided into two parts. In the first part, the page was scrolled down as fast as possible using *JavaScript injection* to retrieve all the links till either the publication date requirements were met or the page reloaded on its own
+
+### 3. Twitter
