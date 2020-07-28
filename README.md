@@ -54,4 +54,9 @@ Twitter has an additional layer of difficultly as compared to The Economic Times
 <br/>
 **Key challenges faced and solutions identified:**
 - The browser page gets stuck after loading 4-5k tweets while program execution still continues leading to no tweets being extracted for the search queries that were searched afterwards. To counter this issue, *driver refresh* was used twice after loading every 2k tweets and then a minute of sleep was induced to bring back the coordination between the program execution and browser
-- Twitter needs **user authentication** before login to the feed. It was solved by employing a rather simple way. A text file containing the login credentials was saved on the local disk and it was used as an input to the username and password text box found using *xpath* on the authentication page
+- Twitter needs **user authentication** before login to the feed. It was solved by employing a rather simple way. A text file containing the login credentials was saved on the local disk and it was used as an input to the username and password input text box found using *xpath* on the authentication page
+
+## Conclusion
+All in all, under this project a total of **approximately 1 million tweets and 400,000 news articles were scraped** for the period of five years between Jan 1, 2015 and Dec 31, 2019 to be used as input in other NLP projects with minimal manual intervention.
+
+**Note - **The python files attached with this repository are kept *clean, re-usable and fully loaded with comments* in order to explain all important aspects of the coding that went into this project.
