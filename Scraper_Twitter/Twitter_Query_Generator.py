@@ -16,7 +16,7 @@ for index in range(0,1826):                # Set number of days for which querie
     y = s + pd.DateOffset(days=index+1)    # set offset days here between since and until dates
     xx = x.strftime('%Y-%m-%d')
     yy = y.strftime('%Y-%m-%d')
-    query = 'moneycontrol ' + 'since:' + xx + ' ' + 'until:' + yy      # e.g. nifty since:2015-01-01 until:2015-01-02
+    query = 'zee tv ' + 'since:' + xx + ' ' + 'until:' + yy      # e.g. nifty since:2015-01-01 until:2015-01-02
     queries.append(query)                   # Append the query list in a text file
     
     
