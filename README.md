@@ -1,4 +1,4 @@
-# Web scraping News Articles and Tweets From Static And Dynamic Pages Using Python
+# Web Scraping News Articles and Tweets From Static And Dynamic Pages Using Python
 ## Problem Statement
 The purpose of this project is to use various web scraping techniques to scrape tweets from Twitter and news articles from a static and a dynamic news website.
 
