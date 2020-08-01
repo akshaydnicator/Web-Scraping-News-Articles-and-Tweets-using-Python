@@ -165,7 +165,7 @@ for search_query in search_queries:
                     twitter_df['Published'] = twitter_df['Published'].map(lambda x: x.encode('unicode-escape').decode('utf-8'))
                     twitter_df['Tweet'] = twitter_df['Tweet'].map(lambda x: x.encode('unicode-escape').decode('utf-8'))
                     len(twitter_df)
-                    twitter_df.to_csv('zee tv 0'+str(times_saved)+'.csv')
+                    twitter_df.to_csv('zee tv 0'+str(times_saved)+'.csv')       # Rename the file here
                     tweet_count = 0
                     twitter_data = {}
                     driver.refresh()
@@ -186,7 +186,7 @@ for search_query in search_queries:
         time.sleep(2)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         
-        # Break the while loop if no new tweets are loaded on a given day and move on to the next day
+        # Break the while loop if no new tweets are loaded on a given day and move on to the next day (next query on the list)
         newHeight = driver.execute_script("return document.body.scrollHeight")
         if newHeight == lastHeight:
             break

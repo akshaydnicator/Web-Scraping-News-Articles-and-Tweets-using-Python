@@ -14,7 +14,7 @@ driver = webdriver.Chrome('C:\\Users\\Akshay Kaushal\\Downloads\\chromedriver')
 
 # Load news-section urls in a list from text document that contains the list of Moneycontrol section urls
 # you want to scrape
-urls = [line.rstrip('\n') for line in open('Search_keywords1.txt')]
+urls = [line.rstrip('\n') for line in open('Search_keywords.txt')]
 
 # To count the number of sections that are done with scraping
 url_index = 0
