@@ -1,3 +1,4 @@
+
 ## This is an Autoscaper which would keep on extracting news on a given page on moneycontrol.com news website
 # given a url or a list of urls untill the work is finished
 

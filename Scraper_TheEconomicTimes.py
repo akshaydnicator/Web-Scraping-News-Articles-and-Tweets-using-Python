@@ -1,3 +1,4 @@
+
 ## This is an Autoscaper which would keep on extracting news on a given page on The Economic Times news website
 # given a section url like 'https://economictimes.indiatimes.com/tech/software' or a list of urls
 
