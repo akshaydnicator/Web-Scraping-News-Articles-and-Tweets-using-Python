@@ -1,3 +1,4 @@
+## This is an Autoscaper which would keep on extracting news on a given page on moneycontrol.com news website given a url or a list of urls untill the work is finished
 
 # Import required libraries
 from bs4 import BeautifulSoup
@@ -83,16 +84,18 @@ for url in urls:
                 news_data = news_response.text
                 news_soup = BeautifulSoup(news_data,'html.parser')
                 
-                # If statement to extract the whole div
+                ## The problem with this website is that when the news link is parsed, it also incldues snippets of backend codes which are totally unnecessary
+                # So use If statement to extract the whole div tag first
                 if news_soup.find('div',{'class':'arti-flow'}):
                     news_text = news_soup.find('div',{'class':'arti-flow'})
 
+                    # Then decompose the unncessarily repeating 'script' and 'style' tags from the scraped content
                     for x in news_text.find_all("script"):
                         x.decompose()
-
                     for y in news_text.find_all('style'):
                         y.decompose()
 
+                    # Finally, decompose the extra standard one-liner text from the bottom of the news article and extract the clean text of the news article
                     try:
                         news_text.find_all('a')[-1].decompose()
                         news = news_text.text
@@ -101,22 +104,27 @@ for url in urls:
                 else:
                     news = 'N/A'
 
+            # A countermeasure in place, in case there are any of the errors such as timeout/internet disconnected/broken links etc.
             except requests.exceptions.RequestException as error:
                 news = 'N/A'
                 print(f'Caught {error}... Slpeeing for 80 sec')
                 time.sleep(80)
                         
+            # Increase the count by 1 for every news scraped and appending it to the empty dictionary
             news_count+=1
             news_articles[news_count] = [title,date,news,link]
             
+            ## Not in use countermeasure; Just to give enough sleep time in between while making large server requests 
             #if news_count in [2500,5000,7500]:
              #   time.sleep(30)
 
+            # A counter, that prints number of articles scraped in a multiple of 1000
             if news_count % 1000 == 0:
                 print('No. ',news_count)
 
+            # Autosave: Extracted text features get saved on local disk with an updated filename every time the news_count reaches 40,000
             if news_count == 40000:
-                times_saved+=1
+                times_saved+=1              # Number of times the Autosave saved files on the disk in one go
                 print('Total Count',news_count)
                 end_time = time.monotonic()
                 print(timedelta(seconds=end_time - start_time))
@@ -133,10 +141,13 @@ for url in urls:
                 news_count = 0
                 #time.sleep(30)
     
+        # Collect the next page url from the bottom of the page
         url_tag = soup.find('a',{'class':'last'})
         
+        # Max number of pages to scrape from a single section on the website restricted to 15,655
         max_pages = 15655
         
+        # While loop would break if no url is found, as in reached the end of the section itself
         try:
             if "void" in url_tag.get('href'):
                 break
