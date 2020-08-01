@@ -1,4 +1,5 @@
-## This is an Autoscaper which would keep on extracting news on a given page on moneycontrol.com news website given a url or a list of urls untill the work is finished
+## This is an Autoscaper which would keep on extracting news on a given page on moneycontrol.com news website
+# given a url or a list of urls untill the work is finished
 
 # Import required libraries
 from bs4 import BeautifulSoup
@@ -13,10 +14,12 @@ s = requests.Session()
 #s.mount('http://', HTTPAdapter(max_retries=2))
 s.mount('https://', HTTPAdapter(max_retries=2))
 
-# Load news-section urls in a list from text document that contains the list of Moneycontrol section urls you want to scrape
+# Load news-section urls in a list from text document that contains the list of Moneycontrol section urls
+# you want to scrape
 urls = [line.rstrip('\n') for line in open('moneycontrol_urls.txt')]
 
-## One of the key challenges faced during execution. The website blocked content if large number of requests are made in a short time
+## One of the key challenges faced during execution. The website blocked content if 
+# large number of requests are made in a short time
 # Below is the solution to the problem. Using a header agent to immitate a browser request to the server  
 headers={
 'Referer': 'https://www.moneycontrol.com',
@@ -32,7 +35,8 @@ news_count = 0
 # Just a counter to update the file name before saving to the disk
 times_saved = 0
 
-# Start the for loop over the list of section urls to scrape all the historical news from those sections one-by-one
+# Start the for loop over the list of section urls to scrape all the historical news from those
+# sections one-by-one
 for url in urls:
 
     # Page number initialized by 0 before entering the while loop for scraping articles from a single section
@@ -78,13 +82,14 @@ for url in urls:
             if news_count == 1:
                 start_time = time.monotonic()    
             
-            # Extract full news text by making another server request using the link of the article extracted in the previous section
+            # Extract full news text by making another server request using the link of the article extracted earlier
             try:
                 news_response = s.get(link, headers=headers, timeout=15)
                 news_data = news_response.text
                 news_soup = BeautifulSoup(news_data,'html.parser')
                 
-                ## The problem with this website is that when the news link is parsed, it also incldues snippets of backend codes which are totally unnecessary
+                ## The problem with this website is that when the news link is parsed,
+                # it also incldues snippets of backend codes which are totally unnecessary
                 # So use If statement to extract the whole div tag first
                 if news_soup.find('div',{'class':'arti-flow'}):
                     news_text = news_soup.find('div',{'class':'arti-flow'})
