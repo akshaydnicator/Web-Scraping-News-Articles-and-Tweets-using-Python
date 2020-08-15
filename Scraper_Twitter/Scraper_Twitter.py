@@ -18,7 +18,7 @@ from datetime import timedelta
 import pandas as pd
 import re
 
-# Initial chrome webdriver
+# Initiate chrome webdriver
 driver = webdriver.Chrome('C:\\Users\\Akshay Kaushal\\Downloads\\chromedriver')
 driver.maximize_window()
 
